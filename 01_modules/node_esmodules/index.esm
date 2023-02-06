@@ -1,3 +1,0 @@
-import myModule from "./myModule.esm";
-
-new myModule();
