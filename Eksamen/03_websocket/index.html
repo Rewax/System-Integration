@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Websocket example with chat</title>
+</head>
+<body>
+    <h1>Websocket example with chat </h1>
+    <textarea id="chat" col="5" placeholder="Insert your text here"></textarea><br>
+    <button onclick="sendHello()">Send Greeting</button>
+    
+    <script>
+        const ws = new WebSocket("ws://localhost:8080");
+        const textarea = document.getElementById("chat")
+        ws.onopen = () => {
+            console.log("Connected to the server");
+        };
+
+        ws.onmessage = () => {
+            console.log(event.data);
+        };
+
+        function sendHello() {
+            ws.send(textarea.value)
+            console.log(textarea.value)
+        }
+    </script>
+</body>
+</html>
